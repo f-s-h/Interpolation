@@ -1,5 +1,8 @@
 package interpolation;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public abstract class InterpolationMethod {
     /**
      * Leftmost x-value of the grid
@@ -10,7 +13,11 @@ public abstract class InterpolationMethod {
      */
     private double b;
     /**
-     * Distance between two supporting points in x direction
+     * Number of intervals
+     */
+    private int n;
+    /**
+     * Distance between two supporting points in x direction (width of intervals)
      */
     private double h;
     /**
@@ -28,25 +35,23 @@ public abstract class InterpolationMethod {
     /**
      * Checks whether all initialization-values are legal
      */
-    private void checkInitParams(double a, double b, double h, double[] y) {
+    private void checkInitParams(double a, double b, double[] y) {
         // Left bound a must be smaller than b
         assert a < b;
-        // If the distance between values is 0 or smaller than 0, y is never and the program would not be deterministic
-        assert h > 0;
     }
 
     /**
      * Initializes the interpolation method
      * @param a: Leftmost x-value of the grid
      * @param b: Rightmost x-value of the grid
-     * @param h: Distance between supporting points
      * @param y: Set of y values of the supporting points
      */
-    public void init(double a, double b, double h, double[] y) {
-        checkInitParams(a, b, h, y);
+    public void init(double a, double b, double[] y) {
+        checkInitParams(a, b, y);
         this.a = a;
         this.b = b;
-        this.h = h;
-        this.y = y;
+        this.y = Arrays.copyOf(y, y.length);
+        this.n = y.length - 1;
+        this.h = (b - a) / n;
     }
 }
