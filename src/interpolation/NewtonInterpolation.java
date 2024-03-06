@@ -114,4 +114,20 @@ public class NewtonInterpolation extends InterpolationMethod {
 
         return result;
     }
+
+    public ArrayList<Double> getCoefficients() {
+        return coefficients;
+    }
+
+    public ArrayList<Double> getX() {
+        return x;
+    }
+
+    public ArrayList<Double> getY() {
+        return y;
+    }
+
+    public ArrayList<ArrayList<Double>> getC() {
+        return c;
+    }
 }
