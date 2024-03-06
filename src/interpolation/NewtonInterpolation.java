@@ -41,7 +41,7 @@ public class NewtonInterpolation extends InterpolationMethod {
      */
     private void setGridPoints() {
         x = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n + 1; i++) {
             x.add(a + i * h);
         }
     }
@@ -51,18 +51,18 @@ public class NewtonInterpolation extends InterpolationMethod {
      */
     private void computeCoefficients() {
         c = new ArrayList<>();
-        for(int i = 0; i < n; i++) {
+        for(int i = 0; i < n + 1; i++) {
             c.add(new ArrayList<>());
         }
 
         // set c_i_0 = y_i
-        for (int i = 0; i < n ; i++) {
+        for (int i = 0; i < n + 1; i++) {
             c.get(i).add(y.get(i));
         }
         // set c_i_k = (c_i+1_k-1 - c_i_k-1)/(x_i+k - x_i)
         // fill the triangular scheme, the coefficients are in c[0][k]
-        for (int k = 1; k < n; k++) {
-            for (int i = 0; i < n - k; i++) {
+        for (int k = 1; k < n + 1; k++) {
+            for (int i = 0; i < n + 1 - k; i++) {
                 c.get(i).add((c.get(i + 1).get(k - 1) - c.get(i).get(k - 1)) / (x.get(i + k) - x.get(i)));
             }
         }
