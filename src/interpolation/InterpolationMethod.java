@@ -53,7 +53,7 @@ public abstract class InterpolationMethod {
         this.a = a;
         this.b = b;
         this.y = Arrays.copyOf(y, y.length);
-        this.n = y.length;
+        this.n = y.length - 1;
         this.h = (b - a) / n;
     }
 }
