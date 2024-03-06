@@ -10,10 +10,10 @@ The grid points are all equidistant, meaning, that they all have the same width 
 
 The Interpolation Methods generally follow the following structure. 
 Some of the methods have been adapted due to performance reasons.
-- $a$:double -> the left most grid point
-- $b$:double -> the right most grid point
-- $y$:double[] -> the y-value of all grid points
-- $n$:int -> the number of intervals (between grid points)
-- $h$:double -> distance between two grid points
+- $a$:double $\rightarrow$ the left most grid point
+- $b$:double $\rightarrow$ the right most grid point
+- $y$:double[] $\rightarrow$ the y-value of all grid points
+- $n$:int $\rightarrow$ the number of intervals (between grid points)
+- $h$:double $\rightarrow$ distance between two grid points
 
 ### Newton Interpolation 
