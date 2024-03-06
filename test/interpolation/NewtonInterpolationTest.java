@@ -41,8 +41,4 @@ public class NewtonInterpolationTest {
         assertTrue(xExpected.equals(xObserved));
     }
 
-    @Test
-    public void
-
-
 }
