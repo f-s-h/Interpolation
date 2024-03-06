@@ -30,6 +30,8 @@ public class NewtonInterpolation extends InterpolationMethod {
     public void init(double a, double b, double[] y) {
         super.init(a, b, y);
         coefficients = new ArrayList<>();
+        this.y = new ArrayList<>();
+        this.y.addAll(Arrays.stream(y).boxed().toList());
         setGridPoints();
         computeCoefficients();
     }
