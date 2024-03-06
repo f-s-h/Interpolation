@@ -22,9 +22,9 @@ public class NewtonInterpolation extends InterpolationMethod {
     private ArrayList<ArrayList<Double>> c;
 
     /**
-     * @param a: Leftmost x-value of the grid
-     * @param b: Rightmost x-value of the grid
-     * @param y: Set of y values of the supporting points
+     * @param a: Leftmost grid point
+     * @param b: Rightmost grid point
+     * @param y: Set of y values of the grid points
      */
     @Override
     public void init(double a, double b, double[] y) {
@@ -56,13 +56,13 @@ public class NewtonInterpolation extends InterpolationMethod {
         }
 
         // set c_i_0 = y_i
-        for (int i = 0; i < n + 1; i++) {
+        for (int i = 0; i < n ; i++) {
             c.get(i).add(y.get(i));
         }
         // set c_i_k = (c_i+1_k-1 - c_i_k-1)/(x_i+k - x_i)
         // fill the triangular scheme, the coefficients are in c[0][k]
-        for (int k = 1; k < n + 1; k++) {
-            for (int i = 0; i < n + 1 - k; i++) {
+        for (int k = 1; k < n; k++) {
+            for (int i = 0; i < n - k; i++) {
                 c.get(i).add((c.get(i + 1).get(k - 1) - c.get(i).get(k - 1)) / (x.get(i + k) - x.get(i)));
             }
         }
