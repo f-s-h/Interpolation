@@ -5,11 +5,11 @@ import java.util.Arrays;
 
 public abstract class InterpolationMethod {
     /**
-     * Leftmost x-value of the grid
+     * x-value of the leftmost grid point
      */
     protected double a;
     /**
-     * Rightmost x-value of the grid
+     * x-value of the rightmost grid point
      */
     protected double b;
     /**
@@ -17,7 +17,7 @@ public abstract class InterpolationMethod {
      */
     protected int n;
     /**
-     * Distance between two supporting points in x direction (width of intervals)
+     * Distance between two grid points in x direction (width of intervals)
      */
     protected double h;
     /**
@@ -44,16 +44,16 @@ public abstract class InterpolationMethod {
     /**
      * Initializes the interpolation method
      *
-     * @param a: Leftmost x-value of the grid
-     * @param b: Rightmost x-value of the grid
-     * @param y: Set of y values of the supporting points
+     * @param a: Leftmost grid point
+     * @param b: Rightmost grid point
+     * @param y: Set of y values of the grid points
      */
     public void init(double a, double b, double[] y) {
         checkInitParams(a, b, y);
         this.a = a;
         this.b = b;
         this.y = Arrays.copyOf(y, y.length);
-        this.n = y.length - 1;
+        this.n = y.length;
         this.h = (b - a) / n;
     }
 }
