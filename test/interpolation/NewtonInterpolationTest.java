@@ -12,7 +12,7 @@ public class NewtonInterpolationTest {
     final private double DELTA = 1e-15;
 
     @Test
-    public void constructorTest() {
+    public void testConstructor() {
         double a = 0.0;
         double b = 1.0;
         double[] y = new double[]{0., 1., 2., 3., 4.};
@@ -41,7 +41,8 @@ public class NewtonInterpolationTest {
         assertTrue(xExpected.equals(xObserved));
     }
 
-
+    @Test
+    public void
 
 
 }
